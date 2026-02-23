@@ -5,8 +5,10 @@ import MovieDisplay from './components/MovieDisplay';
 function App() {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   async function getMovie(searchTerm) {
+    setLoading(true);
     try {
       const res = await fetch(
         `https://www.omdbapi.com/?t=${searchTerm}&apikey=${import.meta.env.VITE_OMDB_API_KEY}`
@@ -22,6 +24,8 @@ function App() {
     } catch (e) {
       console.error(e);
       setError('Network error. Please try again.');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -33,6 +37,7 @@ function App() {
     <div>
       <h1>Movie Search</h1>
       <Form onSearch={getMovie} />
+      {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <MovieDisplay movie={movie} />
     </div>
