@@ -1,16 +1,40 @@
-# React + Vite
+# Movie Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app that lets you search for movies using the OMDB API.
 
-Currently, two official plugins are available:
+## What it does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Loads a default movie when the page opens
+- You can type a movie title and click Search to look it up
+- Shows the movie poster, title, year, genre, plot, and rating
+- Shows an error message if the movie is not found
 
-## React Compiler
+## Concepts used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **useState** — stores movie data, loading state, and error messages
+- **useEffect** — fetches a default movie when the page first loads
+- **Lifting state** — movie data lives in App and gets passed down to child components
+- **Controlled input** — the search box is controlled by React state
+- **Props** — the search function and movie data are passed between components
+- **async/await + try/catch** — handles the API call and errors cleanly
 
-## Expanding the ESLint configuration
+## Components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `App.jsx` — main component, holds all state and the fetch function
+- `Form.jsx` — search form with a controlled input
+- `MovieDisplay.jsx` — displays the movie info from props
+
+## How to run it
+
+1. Clone the repo
+2. Run `npm install`
+3. Create a `.env` file in the root with your OMDB API key:
+   ```
+   VITE_OMDB_API_KEY=your_key_here
+   ```
+4. Run `npm run dev`
+5. Open `http://localhost:5173`
+
+## API
+
+This app uses the [OMDB API](https://www.omdbapi.com). You can get a free API key at omdbapi.com.
