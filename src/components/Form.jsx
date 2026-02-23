@@ -9,7 +9,7 @@ export default function Form({ onSearch }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search for a movie"

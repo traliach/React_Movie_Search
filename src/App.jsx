@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Form from './components/Form';
 import MovieDisplay from './components/MovieDisplay';
+import './App.css';
 
 function App() {
   const [movie, setMovie] = useState(null);
@@ -37,8 +38,8 @@ function App() {
     <div>
       <h1>Movie Search</h1>
       <Form onSearch={getMovie} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {loading && <p className="status">Loading...</p>}
+      {error && <p className="error">{error}</p>}
       <MovieDisplay movie={movie} />
     </div>
   );
