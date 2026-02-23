@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from './components/Form';
 import MovieDisplay from './components/MovieDisplay';
 
@@ -24,6 +24,10 @@ function App() {
       setError('Network error. Please try again.');
     }
   }
+
+  useEffect(() => {
+    getMovie('Clueless');
+  }, []);
 
   return (
     <div>
