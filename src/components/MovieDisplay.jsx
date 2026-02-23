@@ -1,4 +1,7 @@
+// pure display component — receives movie data as a prop, does not fetch anything
 export default function MovieDisplay({ movie }) {
+
+  // guard against null: prevents crash before any movie is fetched
   if (!movie) return <p className="no-movie">No movie to display.</p>;
 
   return (

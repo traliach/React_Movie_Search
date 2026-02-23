@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
+// onSearch is the getMovie function passed down from App (lifting state)
 export default function Form({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(''); // tracks what user types
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); // prevents page refresh on form submit
     if (searchTerm.trim()) onSearch(searchTerm);
   }
 
@@ -13,8 +14,8 @@ export default function Form({ onSearch }) {
       <input
         type="text"
         placeholder="Search for a movie"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        value={searchTerm}                              // controlled input
+        onChange={(e) => setSearchTerm(e.target.value)} // update state on each keystroke
       />
       <button type="submit">Search</button>
     </form>
